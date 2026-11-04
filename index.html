@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Базовые реакции неорганической химии</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f5f7fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.25);
+            padding: 32px 36px;
+            transition: all 0.2s;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0b2b4b;
+            letter-spacing: -0.01em;
+            border-left: 8px solid #3b8cff;
+            padding-left: 24px;
+        }
+        .subhead {
+            color: #5a6e85;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            border-left: 8px solid #b0c9e8;
+            padding-left: 24px;
+        }
+        .card {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            border: 1px solid #e2edff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card h2 .badge {
+            background: #3b8cff;
+            color: white;
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .theory-text {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .highlight {
+            background: #e8f0fe;
+            color: #0b3a6b;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 30px;
+            border: 1px solid #b8d4ff;
+            display: inline-block;
+            margin: 2px 0;
+            transition: 0.15s;
+        }
+        .highlight:hover {
+            background: #cfe2ff;
+            border-color: #3b8cff;
+        }
+        .oxide-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            margin: 18px 0 12px;
+        }
+        .oxide-table th {
+            text-align: left;
+            font-weight: 600;
+            color: #264e7a;
+            padding: 6px 12px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .oxide-table td {
+            background: #ffffff;
+            padding: 10px 16px;
+            border-radius: 14px;
+            box-shadow: 0 2px 6px rgba(0, 20, 50, 0.04);
+            border: 1px solid #deecff;
+            font-size: 1.1rem;
+        }
+        .oxide-table td:first-child {
+            font-weight: 600;
+            color: #12417a;
+        }
+        .oxide-table td:last-child {
+            color: #1d5e3b;
+            font-weight: 500;
+        }
+        .task-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px 28px;
+            margin-top: 16px;
+            border: 2px dashed #b8d4ff;
+        }
+        .task-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0b2b4b;
+            margin-bottom: 16px;
+        }
+        .task-item {
+            background: #f8fbff;
+            border-radius: 20px;
+            padding: 18px 24px;
+            margin-bottom: 18px;
+            border-left: 6px solid #3b8cff;
+        }
+        .task-question {
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            color: #0a2e4e;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            align-items: center;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            background: white;
+            padding: 8px 18px 8px 12px;
+            border-radius: 60px;
+            border: 1.5px solid #cde0f5;
+            transition: 0.15s;
+        }
+        .option:hover {
+            background: #e3efff;
+            border-color: #3b8cff;
+        }
+        .option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1e6eff;
+            margin: 0;
+            cursor: pointer;
+        }
+        .option label {
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: #1e3a5f;
+        }
+        .btn-check {
+            background: #1e6eff;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 4px 12px rgba(30, 110, 255, 0.3);
+            margin-top: 6px;
+            margin-right: 12px;
+            border: 1px solid #307cff;
+        }
+        .btn-check:hover {
+            background: #0b5ae0;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(30, 110, 255, 0.4);
+        }
+        .btn-check:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(30, 110, 255, 0.4);
+        }
+        .btn-reset {
+            background: #eef3fc;
+            border: 1px solid #b8d0ee;
+            color: #2a4e7a;
+            font-weight: 500;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.15s;
+            font-size: 1rem;
+        }
+        .btn-reset:hover {
+            background: #dee9fc;
+            border-color: #7aa9e0;
+        }
+        .feedback {
+            margin-top: 12px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        .feedback.correct {
+            background: #d7f0e0;
+            color: #136b3e;
+        }
+        .feedback.incorrect {
+            background: #ffe2df;
+            color: #b13e2e;
+        }
+        .feedback.neutral {
+            background: #eef2f7;
+            color: #425f7a;
+        }
+        .footer-note {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7e96b3;
+            border-top: 1px solid #d8e6fc;
+            padding-top: 22px;
+        }
+
+        /* ===== СТИЛИ ДЛЯ СТРАНИЦ ===== */
+        .page-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e2edff;
+            padding-bottom: 12px;
+        }
+        .page-nav button {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            color: #5a6e85;
+            transition: 0.15s;
+            white-space: nowrap;
+        }
+        .page-nav button.active {
+            background: #1e6eff;
+            color: white;
+            box-shadow: 0 4px 10px rgba(30, 110, 255, 0.3);
+        }
+        .page-nav button:hover:not(.active) {
+            background: #eef3fc;
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Drag & Drop */
+        .dnd-bank {
+            background: #edf4ff;
+            border-radius: 20px;
+            padding: 16px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 60px;
+            border: 2px dashed #b8d4ff;
+        }
+        .dnd-chip {
+            background: white;
+            border: 2px solid #3b8cff;
+            color: #12417a;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: grab;
+            user-select: none;
+            transition: 0.15s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            font-size: 1rem;
+        }
+        .dnd-chip:active {
+            cursor: grabbing;
+        }
+        .dnd-chip.dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+        .dnd-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .dnd-group {
+            background: #fafcff;
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid #d8e6fc;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+        }
+        .dnd-group-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2edff;
+        }
+        .dnd-dropzone {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-content: flex-start;
+            min-height: 50px;
+            transition: 0.15s;
+            border-radius: 12px;
+            padding: 4px;
+        }
+        .dnd-dropzone.drag-over {
+            background: #e3efff;
+            outline: 2px dashed #3b8cff;
+        }
+        .dnd-dropzone .dnd-chip {
+            cursor: pointer;
+            border-color: #7aa9e0;
+            background: #ffffff;
+            padding: 4px 12px;
+            font-size: 0.95rem;
+        }
+
+        /* Заполнение таблицы */
+        .fill-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .fill-table th {
+            background: #eef3fc;
+            padding: 12px;
+            font-weight: 600;
+            color: #264e7a;
+            border: 1px solid #d8e6fc;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .fill-table td {
+            padding: 10px 12px;
+            border: 1px solid #d8e6fc;
+            text-align: center;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .fill-table tr.row-error td {
+            background-color: #ffe2df;
+        }
+        .fill-input {
+            width: 100%;
+            border: 1.5px solid #cde0f5;
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 1rem;
+            text-align: center;
+            transition: 0.15s;
+            background: white;
+            font-family: inherit;
+            color: #1e2a3a;
+        }
+        .fill-input:focus {
+            outline: none;
+            border-color: #3b8cff;
+            box-shadow: 0 0 0 3px rgba(59, 140, 255, 0.15);
+        }
+        .type-select {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+        }
+        .type-btn {
+            background: white;
+            border: 1px solid #cde0f5;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.15s;
+            color: #2a4e7a;
+        }
+        .type-btn:hover {
+            background: #e3efff;
+        }
+        .type-btn.selected {
+            background: #1e6eff;
+            color: white;
+            border-color: #1e6eff;
+        }
+        .type-btn.selected[data-type="амфотерный"] {
+            background: #ff8c42;
+            border-color: #ff8c42;
+        }
+        .type-btn.selected[data-type="кислотный"] {
+            background: #2eb872;
+            border-color: #2eb872;
+        }
+        .type-btn.selected[data-type="основный"] {
+            background: #1e6eff;
+            border-color: #1e6eff;
+        }
+        .table-feedback {
+            margin-top: 16px;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .table-feedback.correct { background: #d7f0e0; color: #136b3e; }
+        .table-feedback.incorrect { background: #ffe2df; color: #b13e2e; }
+        .table-feedback.neutral { background: #eef2f7; color: #425f7a; }
+
+        /* Реакции (протекает / не протекает) */
+        .reaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .reaction-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafcff;
+            padding: 12px 20px;
+            border-radius: 16px;
+            border: 1px solid #d8e6fc;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: background-color 0.3s ease;
+        }
+        .reaction-item.row-error {
+            background: #ffe2df;
+            border-color: #e25041;
+        }
+        .reaction-formula {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0a2e4e;
+            min-width: 200px;
+        }
+        .reaction-options {
+            display: flex;
+            gap: 10px;
+        }
+        .reaction-btn {
+            background: white;
+            border: 2px solid #cde0f5;
+            color: #2a4e7a;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.15s;
+        }
+        .reaction-btn:hover {
+            background: #e3efff;
+            border-color: #3b8cff;
+        }
+        .reaction-btn.selected-proceeds {
+            background: #2eb872;
+            border-color: #2eb872;
+            color: white;
+        }
+        .reaction-btn.selected-not-proceeds {
+            background: #e25041;
+            border-color: #e25041;
+            color: white;
+        }
+
+        /* Чекбоксы */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 40px;
+            border: 1.5px solid #cde0f5;
+            cursor: pointer;
+            transition: 0.15s;
+            width: fit-content;
+        }
+        .checkbox-item:hover {
+            background: #e3efff;
+            border-color: #3b8cff;
+        }
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1e6eff;
+            cursor: pointer;
+        }
+        .checkbox-item label {
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: #1e3a5f;
+        }
+
+        /* Уравнения с пропусками */
+        .equation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .equation-item {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: #fafcff;
+            padding: 12px 20px;
+            border-radius: 16px;
+            border: 1px solid #d8e6fc;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        .equation-item.row-error {
+            background: #ffe2df;
+            border-color: #e25041;
+        }
+        .equation-part {
+            font-weight: 500;
+            color: #0a2e4e;
+        }
+        .equation-input {
+            width: 160px;
+            border: 1.5px solid #cde0f5;
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 1rem;
+            text-align: center;
+            transition: 0.15s;
+            background: white;
+            font-family: inherit;
+            color: #1e2a3a;
+        }
+        .equation-input:focus {
+            outline: none;
+            border-color: #3b8cff;
+            box-shadow: 0 0 0 3px rgba(59, 140, 255, 0.15);
+        }
+
+        /* Пары веществ */
+        .pair-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fafcff;
+            padding: 12px 20px;
+            border-radius: 16px;
+            border: 1px solid #d8e6fc;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: background-color 0.3s ease;
+        }
+        .pair-item.row-error {
+            background: #ffe2df;
+            border-color: #e25041;
+        }
+        .pair-formula {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0a2e4e;
+            min-width: 200px;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 16px; }
+            h1 { font-size: 1.6rem; padding-left: 16px; }
+            .subhead { padding-left: 16px; }
+            .dnd-groups { grid-template-columns: 1fr; }
+            .fill-table td, .fill-table th { padding: 6px 4px; font-size: 0.85rem; }
+            .type-btn { font-size: 0.7rem; padding: 2px 6px; }
+            .reaction-item { flex-direction: column; align-items: flex-start; }
+            .equation-item { flex-direction: column; align-items: flex-start; }
+            .equation-input { width: 100%; }
+            .pair-item { flex-direction: column; align-items: flex-start; }
+            .page-nav button { font-size: 0.85rem; padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Базовые реакции неорганической химии</h1>
+    <div class="subhead">Тренажёр · теория и практика</div>
+
+    <!-- Навигация по страницам -->
+    <div class="page-nav">
+        <button class="active" data-page="page1">Классификация оксидов</button>
+        <button data-page="page2">Тренажер</button>
+        <button data-page="page3">Реакции оксидов с водой</button>
+        <button data-page="page4">Кислотно-основные реакции</button>
+        <button data-page="page5">Свойства солей</button>
+    </div>
+
+    <!-- ========== СТРАНИЦА 1: Классификация оксидов ========== -->
+    <div id="page1" class="page-section active">
+        <div class="card">
+            <h2><span class="badge">1</span> Основные оксиды</h2>
+            <div class="theory-text">
+                <span class="highlight">Основные оксиды</span> — оксиды металлов в степени окисления +1, +2 (кроме исключений).<br>
+                <span style="color:#2d5f8b; font-weight:500;">Примеры:</span> Na₂O, CaO, BaO, K₂O, MgO.<br>
+                Основные оксиды проявляют основные свойства.<br>
+                Основным оксидам соответствуют основания. Степень окисления металла в оксиде и соответствующем основании должна быть одинаковая.
+            </div>
+            <table class="oxide-table">
+                <tr><th>Оксид</th><th>Основание</th></tr>
+                <tr><td>Na₂O</td><td>NaOH</td></tr>
+                <tr><td>K₂O</td><td>KOH</td></tr>
+                <tr><td>BaO</td><td>Ba(OH)₂</td></tr>
+                <tr><td>MgO</td><td>Mg(OH)₂</td></tr>
+                <tr><td>FeO</td><td>Fe(OH)₂</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2><span class="badge">2</span> Амфотерные оксиды</h2>
+            <div class="theory-text">
+                <span class="highlight">Амфотерные оксиды</span> — оксиды металлов в степени окисления +3 и +4, а также ZnO, BeO, PbO. <br>
+                <span style="color:#2d5f8b; font-weight:500;">Примеры:</span> Al₂O₃, ZnO, Cr₂O₃.<br>
+                Амфотерные оксиды проявляют как кислотные, так и основные свойства.<br>
+                Амфотерным оксидам соответствуют амфотерные гидроксиды. Степень окисления металла в оксиде и соответствующем гидроксиде должна быть одинаковая.
+            </div>
+            <table class="oxide-table">
+                <tr><th>Оксид</th><th>Амфотерный гидроксид</th></tr>
+                <tr><td>ZnO</td><td>Zn(OH)₂</td></tr>
+                <tr><td>BeO</td><td>Be(OH)₂</td></tr>
+                <tr><td>Al₂O₃</td><td>Al(OH)₃</td></tr>
+                <tr><td>Fe₂O₃</td><td>Fe(OH)₃</td></tr>
+                <tr><td>Cr₂O₃</td><td>Cr(OH)₃</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2><span class="badge">3</span> Кислотные оксиды</h2>
+            <div class="theory-text">
+                <span class="highlight">Кислотные оксиды</span> — оксиды неметаллов и металлов в высокой степени окисления.<br>
+                <span style="color:#2d5f8b; font-weight:500;">Примеры:</span> SO₃, N₂O₅, SiO₂, SO₂, CO₂, P₂O₅.<br>
+                Кислотные оксиды проявляют кислотные свойства.<br>
+                Кислотным оксидам соответствуют кислотные гидроксиды (кислоты).
+            </div>
+            <table class="oxide-table">
+                <tr><th>Оксид</th><th>Кислота</th></tr>
+                <tr><td>SO₂</td><td>H₂SO₃</td></tr>
+                <tr><td>CO₂</td><td>H₂CO₃</td></tr>
+                <tr><td>SiO₂</td><td>H₂SiO₃</td></tr>
+                <tr><td>SO₃</td><td>H₂SO₄</td></tr>
+                <tr><td>P₂O₅</td><td>H₃PO₄</td></tr>
+                <tr><td>N₂O₅</td><td>HNO₃</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2><span class="badge">4</span> Несолеобразующие оксиды</h2>
+            <div class="theory-text">
+                <span class="highlight">Несолеобразующие оксиды</span> не вступают в реакции кислотно-основного взаимодействия, не образуют солей.<br>
+                <span style="color:#2d5f8b; font-weight:500;">Примеры:</span> CO, NO, N₂O.
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>📝 Проверь себя (тест)</h2>
+
+            <div class="task-item" id="task1">
+                <div class="task-question">1. Какой оксид относится к основным?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="SO3"> SO₃</label>
+                    <label class="option"><input type="radio" name="q1" value="Na2O"> Na₂O</label>
+                    <label class="option"><input type="radio" name="q1" value="ZnO"> ZnO</label>
+                    <label class="option"><input type="radio" name="q1" value="CO"> CO</label>
+                </div>
+                <div style="margin-top:12px;">
+                    <button class="btn-check" data-task="1">Проверить</button>
+                    <button class="btn-reset" data-task="1">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb1"></div>
+            </div>
+
+            <div class="task-item" id="task2">
+                <div class="task-question">2. Какому оксиду соответствует гидроксид Al(OH)₃?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="Al2O3"> Al₂O₃</label>
+                    <label class="option"><input type="radio" name="q2" value="Fe2O3"> Fe₂O₃</label>
+                    <label class="option"><input type="radio" name="q2" value="Cr2O3"> Cr₂O₃</label>
+                    <label class="option"><input type="radio" name="q2" value="ZnO"> ZnO</label>
+                </div>
+                <div style="margin-top:12px;">
+                    <button class="btn-check" data-task="2">Проверить</button>
+                    <button class="btn-reset" data-task="2">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb2"></div>
+            </div>
+
+            <div class="task-item" id="task3">
+                <div class="task-question">3. Какой оксид является кислотным?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="CaO"> CaO</label>
+                    <label class="option"><input type="radio" name="q3" value="CO2"> CO₂</label>
+                    <label class="option"><input type="radio" name="q3" value="BeO"> BeO</label>
+                    <label class="option"><input type="radio" name="q3" value="NO"> NO</label>
+                </div>
+                <div style="margin-top:12px;">
+                    <button class="btn-check" data-task="3">Проверить</button>
+                    <button class="btn-reset" data-task="3">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb3"></div>
+            </div>
+
+            <div class="task-item" id="task4">
+                <div class="task-question">4. Какой оксид является несолеобразующим?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="CO"> CO</label>
+                    <label class="option"><input type="radio" name="q4" value="SO2"> SO₂</label>
+                    <label class="option"><input type="radio" name="q4" value="MgO"> MgO</label>
+                    <label class="option"><input type="radio" name="q4" value="Cr2O3"> Cr₂O₃</label>
+                </div>
+                <div style="margin-top:12px;">
+                    <button class="btn-check" data-task="4">Проверить</button>
+                    <button class="btn-reset" data-task="4">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb4"></div>
+            </div>
+
+            <div class="task-item" id="task5">
+                <div class="task-question">5. Установите соответствие: какой оксид соответствует кислоте H₂SO₃?</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="SO3"> SO₃</label>
+                    <label class="option"><input type="radio" name="q5" value="SO2"> SO₂</label>
+                    <label class="option"><input type="radio" name="q5" value="H2SO4"> H₂SO₄</label>
+                    <label class="option"><input type="radio" name="q5" value="P2O5"> P₂O₅</label>
+                </div>
+                <div style="margin-top:12px;">
+                    <button class="btn-check" data-task="5">Проверить</button>
+                    <button class="btn-reset" data-task="5">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== СТРАНИЦА 2: Тренажер ========== -->
+    <div id="page2" class="page-section">
+        <div class="task-section">
+            <h2>🎯 Задание 1: Распределите оксиды по группам</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Перетащите каждый оксид в соответствующую колонку. Нажмите «Проверить», чтобы узнать результат.
+            </p>
+
+            <div class="dnd-bank" id="dndBank">
+                <div class="dnd-chip" draggable="true" data-id="BeO">BeO</div>
+                <div class="dnd-chip" draggable="true" data-id="NO">NO</div>
+                <div class="dnd-chip" draggable="true" data-id="N2O5">N₂O₅</div>
+                <div class="dnd-chip" draggable="true" data-id="BaO">BaO</div>
+                <div class="dnd-chip" draggable="true" data-id="Al2O3">Al₂O₃</div>
+                <div class="dnd-chip" draggable="true" data-id="SO3">SO₃</div>
+                <div class="dnd-chip" draggable="true" data-id="CO2">CO₂</div>
+                <div class="dnd-chip" draggable="true" data-id="Fe2O3">Fe₂O₃</div>
+                <div class="dnd-chip" draggable="true" data-id="CO">CO</div>
+                <div class="dnd-chip" draggable="true" data-id="Li2O">Li₂O</div>
+                <div class="dnd-chip" draggable="true" data-id="FeO">FeO</div>
+                <div class="dnd-chip" draggable="true" data-id="P2O5">P₂O₅</div>
+                <div class="dnd-chip" draggable="true" data-id="MgO">MgO</div>
+                <div class="dnd-chip" draggable="true" data-id="SiO2">SiO₂</div>
+            </div>
+
+            <div class="dnd-groups">
+                <div class="dnd-group" data-group="несолеобразующие">
+                    <div class="dnd-group-title">Несолеобразующие</div>
+                    <div class="dnd-dropzone" data-group="несолеобразующие"></div>
+                </div>
+                <div class="dnd-group" data-group="основные">
+                    <div class="dnd-group-title">Основные</div>
+                    <div class="dnd-dropzone" data-group="основные"></div>
+                </div>
+                <div class="dnd-group" data-group="амфотерные">
+                    <div class="dnd-group-title">Амфотерные</div>
+                    <div class="dnd-dropzone" data-group="амфотерные"></div>
+                </div>
+                <div class="dnd-group" data-group="кислотные">
+                    <div class="dnd-group-title">Кислотные</div>
+                    <div class="dnd-dropzone" data-group="кислотные"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkDnd">Проверить</button>
+                <button class="btn-reset" id="resetDnd">Сбросить</button>
+            </div>
+            <div class="feedback" id="dndFeedback"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>📋 Задание 2: Заполните таблицу</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Впишите формулы оксидов и гидроксидов, а также выберите тип (основный, кислотный, амфотерный). <em>Регистр и индексы (обычные цифры) не важны.</em>
+            </p>
+
+            <table class="fill-table" id="fillTable">
+                <thead>
+                    <tr>
+                        <th>Оксид</th>
+                        <th>Гидроксид</th>
+                        <th>Тип</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CaO</td>
+                        <td><input class="fill-input" data-row="0" data-col="hydroxide" placeholder="___"></td>
+                        <td>
+                            <div class="type-select" data-row="0">
+                                <button class="type-btn" data-type="основный" data-row="0">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="0">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="0">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SiO₂</td>
+                        <td><input class="fill-input" data-row="1" data-col="hydroxide" placeholder="___"></td>
+                        <td>
+                            <div class="type-select" data-row="1">
+                                <button class="type-btn" data-type="основный" data-row="1">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="1">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="1">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="fill-input" data-row="2" data-col="oxide" placeholder="___"></td>
+                        <td>Fe(OH)₃</td>
+                        <td>
+                            <div class="type-select" data-row="2">
+                                <button class="type-btn" data-type="основный" data-row="2">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="2">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="2">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SO₂</td>
+                        <td><input class="fill-input" data-row="3" data-col="hydroxide" placeholder="___"></td>
+                        <td>
+                            <div class="type-select" data-row="3">
+                                <button class="type-btn" data-type="основный" data-row="3">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="3">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="3">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="fill-input" data-row="4" data-col="oxide" placeholder="___"></td>
+                        <td>Cr(OH)₂</td>
+                        <td>
+                            <div class="type-select" data-row="4">
+                                <button class="type-btn" data-type="основный" data-row="4">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="4">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="4">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="fill-input" data-row="5" data-col="oxide" placeholder="___"></td>
+                        <td>H₂SO₄</td>
+                        <td>
+                            <div class="type-select" data-row="5">
+                                <button class="type-btn" data-type="основный" data-row="5">основный</button>
+                                <button class="type-btn" data-type="кислотный" data-row="5">кислотный</button>
+                                <button class="type-btn" data-type="амфотерный" data-row="5">амфотерный</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkFill">Проверить</button>
+                <button class="btn-reset" id="resetFill">Сбросить</button>
+            </div>
+            <div class="table-feedback" id="fillFeedback"></div>
+        </div>
+    </div>
+
+    <!-- ========== СТРАНИЦА 3: Реакции оксидов с водой ========== -->
+    <div id="page3" class="page-section">
+        <div class="card">
+            <h2><span class="badge">Т</span> Взаимодействие оксидов с водой</h2>
+            <div class="theory-text">
+                Оксиды взаимодействуют с водой только в том случае, если образуется <strong>растворимый продукт</strong>.<br>
+                Растворимость оснований, кислот и амфотерных гидроксидов можно посмотреть в таблице растворимости.
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🧪 Задание 1: Протекает ли реакция?</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Укажите, какие из написанных реакций протекают, а какие нет. Нажмите на соответствующий вариант для каждой реакции.
+            </p>
+
+            <div class="reaction-list" id="reactionList">
+                <div class="reaction-item" data-reaction-id="0">
+                    <div class="reaction-formula">P₂O₅ + 3H₂O = 2H₃PO₄</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="1">
+                    <div class="reaction-formula">CO₂ + H₂O = H₂CO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="2">
+                    <div class="reaction-formula">CuO + H₂O = Cu(OH)₂</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="3">
+                    <div class="reaction-formula">K₂O + H₂O = 2KOH</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="4">
+                    <div class="reaction-formula">Fe₂O₃ + 3H₂O = 2Fe(OH)₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="5">
+                    <div class="reaction-formula">SiO₂ + H₂O → H₂SiO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="6">
+                    <div class="reaction-formula">BaO + H₂O → Ba(OH)₂</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkReactions">Проверить</button>
+                <button class="btn-reset" id="resetReactions">Сбросить</button>
+            </div>
+            <div class="feedback" id="reactionsFeedback"></div>
+        </div>
+    </div>
+
+    <!-- ========== СТРАНИЦА 4: Кислотно-основные реакции ========== -->
+    <div id="page4" class="page-section">
+        <div class="card">
+            <h2><span class="badge">Т</span> Кислотно-основное взаимодействие</h2>
+            <div class="theory-text">
+                В реакцию вступают оксиды и гидроксиды, обладающие противоположными свойствами.<br>
+                В результате реакции всегда образуется <strong>соль</strong>. В состав соли входит катион металла (из «основной» части) и анион кислотного остатка (из «кислотной» части).
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎯 Задание 1: Распределите по свойствам</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Перетащите классы веществ в группы в зависимости от того, какие свойства они проявляют в химических реакциях.
+            </p>
+
+            <div class="dnd-bank" id="dndBank4">
+                <div class="dnd-chip" draggable="true" data-id="основные оксиды">основные оксиды</div>
+                <div class="dnd-chip" draggable="true" data-id="амфотерные оксиды">амфотерные оксиды</div>
+                <div class="dnd-chip" draggable="true" data-id="кислотные оксиды">кислотные оксиды</div>
+                <div class="dnd-chip" draggable="true" data-id="основания">основания</div>
+                <div class="dnd-chip" draggable="true" data-id="кислоты">кислоты</div>
+                <div class="dnd-chip" draggable="true" data-id="амфотерные гидроксиды">амфотерные гидроксиды</div>
+            </div>
+
+            <div class="dnd-groups">
+                <div class="dnd-group" data-group="основные свойства">
+                    <div class="dnd-group-title">Основные свойства</div>
+                    <div class="dnd-dropzone" data-group="основные свойства"></div>
+                </div>
+                <div class="dnd-group" data-group="кислотные свойства">
+                    <div class="dnd-group-title">Кислотные свойства</div>
+                    <div class="dnd-dropzone" data-group="кислотные свойства"></div>
+                </div>
+                <div class="dnd-group" data-group="основные и кислотные свойства">
+                    <div class="dnd-group-title">Основные и кислотные свойства</div>
+                    <div class="dnd-dropzone" data-group="основные и кислотные свойства"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkDnd4">Проверить</button>
+                <button class="btn-reset" id="resetDnd4">Сбросить</button>
+            </div>
+            <div class="feedback" id="dndFeedback4"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>📝 Задание 2: Выбор нескольких ответов</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Какие два из перечисленных веществ вступают в реакцию с оксидом кальция? <em>(Выберите два варианта)</em>
+            </p>
+            <div class="checkbox-group" id="checkTask2">
+                <label class="checkbox-item"><input type="checkbox" value="1" data-task="t2"> 1) HCl</label>
+                <label class="checkbox-item"><input type="checkbox" value="2" data-task="t2"> 2) K₂O</label>
+                <label class="checkbox-item"><input type="checkbox" value="3" data-task="t2"> 3) KOH</label>
+                <label class="checkbox-item"><input type="checkbox" value="4" data-task="t2"> 4) Cu(OH)₂</label>
+                <label class="checkbox-item"><input type="checkbox" value="5" data-task="t2"> 5) Al₂O₃</label>
+            </div>
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkTask2Btn">Проверить</button>
+                <button class="btn-reset" id="resetTask2Btn">Сбросить</button>
+            </div>
+            <div class="feedback" id="fbTask2"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>📝 Задание 3: Выбор нескольких ответов</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Какие два из перечисленных веществ вступают в реакцию с оксидом серы(IV)? <em>(Выберите два варианта)</em>
+            </p>
+            <div class="checkbox-group" id="checkTask3">
+                <label class="checkbox-item"><input type="checkbox" value="1" data-task="t3"> 1) HBr</label>
+                <label class="checkbox-item"><input type="checkbox" value="2" data-task="t3"> 2) CO₂</label>
+                <label class="checkbox-item"><input type="checkbox" value="3" data-task="t3"> 3) Ca(OH)₂</label>
+                <label class="checkbox-item"><input type="checkbox" value="4" data-task="t3"> 4) BaO</label>
+                <label class="checkbox-item"><input type="checkbox" value="5" data-task="t3"> 5) SiO₂</label>
+            </div>
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkTask3Btn">Проверить</button>
+                <button class="btn-reset" id="resetTask3Btn">Сбросить</button>
+            </div>
+            <div class="feedback" id="fbTask3"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>🧪 Задание 4: Напишите продукт реакции</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Впишите пропущенную формулу вещества (соль). <em>Регистр и индексы (обычные цифры) не важны.</em>
+            </p>
+
+            <div class="equation-list" id="equationList">
+                <div class="equation-item" data-equation-id="0">
+                    <span class="equation-part">CaO + SO₂ → </span>
+                    <input class="equation-input" placeholder="___">
+                </div>
+                <div class="equation-item" data-equation-id="1">
+                    <span class="equation-part">CO₂ + Ca(OH)₂ → </span>
+                    <input class="equation-input" placeholder="___">
+                    <span class="equation-part"> + H₂O</span>
+                </div>
+                <div class="equation-item" data-equation-id="2">
+                    <span class="equation-part">Na₂O + SiO₂ → </span>
+                    <input class="equation-input" placeholder="___">
+                </div>
+                <div class="equation-item" data-equation-id="3">
+                    <span class="equation-part">FeO + HCl → </span>
+                    <input class="equation-input" placeholder="___">
+                    <span class="equation-part"> + H₂O</span>
+                </div>
+                <div class="equation-item" data-equation-id="4">
+                    <span class="equation-part">Fe₂O₃ + HCl → </span>
+                    <input class="equation-input" placeholder="___">
+                    <span class="equation-part"> + H₂O</span>
+                </div>
+                <div class="equation-item" data-equation-id="5">
+                    <span class="equation-part">CuO + H₂SO₄ → </span>
+                    <input class="equation-input" placeholder="___">
+                    <span class="equation-part"> + H₂O</span>
+                </div>
+                <div class="equation-item" data-equation-id="6">
+                    <span class="equation-part">P₂O₅ + Ba(OH)₂ → </span>
+                    <input class="equation-input" placeholder="___">
+                    <span class="equation-part"> + H₂O</span>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkEquations">Проверить</button>
+                <button class="btn-reset" id="resetEquations">Сбросить</button>
+            </div>
+            <div class="feedback" id="equationsFeedback"></div>
+        </div>
+    </div>
+
+    <!-- ========== СТРАНИЦА 5: Свойства солей ========== -->
+    <div id="page5" class="page-section">
+        <div class="card">
+            <h2><span class="badge">Т</span> Свойства солей</h2>
+            <div class="theory-text">
+                <strong>Правило 1.</strong> Растворимые соли вступают в реакцию обмена с другими растворимыми солями или щелочами, если в продуктах образуется газ, осадок или слабый электролит.<br><br>
+                <strong>Правило 2.</strong> В реакцию с кислотами не вступают соли AgCl, AgBr, AgI, CuS, BaSO₄.<br>
+                Остальные соли (даже если они нерастворимы в воде) могут реагировать с кислотами при соблюдении одного из двух условий:
+                <ol style="margin-left: 24px; margin-top: 6px;">
+                    <li>образуется более слабая кислота;</li>
+                    <li>образуется AgCl, AgBr, AgI, CuS, BaSO₄.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🧪 Задание 1: Протекает ли реакция?</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Укажите, протекает ли данная реакция обмена. Нажмите на соответствующий вариант для каждой реакции.
+            </p>
+
+            <div class="reaction-list" id="reactionList5">
+                <div class="reaction-item" data-reaction-id="0">
+                    <div class="reaction-formula">AgNO₃ + NaCl → AgCl + NaNO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="1">
+                    <div class="reaction-formula">Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="2">
+                    <div class="reaction-formula">2KNO₃ + Na₂SO₄ → K₂SO₄ + 2NaNO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="3">
+                    <div class="reaction-formula">MgCl₂ + Ba(OH)₂ → Mg(OH)₂ + BaCl₂</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+                <div class="reaction-item" data-reaction-id="4">
+                    <div class="reaction-formula">Cu(OH)₂ + CaCl₂ → Ca(OH)₂ + CuCl₂</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="proceeds">протекает</button>
+                        <button class="reaction-btn" data-value="not-proceeds">не протекает</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkReactions5">Проверить</button>
+                <button class="btn-reset" id="resetReactions5">Сбросить</button>
+            </div>
+            <div class="feedback" id="reactionsFeedback5"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎯 Задание 2: Распределите кислоты</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Перетащите кислоты в группы «Сильные кислоты» и «Слабые кислоты».
+            </p>
+
+            <div class="dnd-bank" id="dndBank5">
+                <div class="dnd-chip" draggable="true" data-id="HCl">HCl</div>
+                <div class="dnd-chip" draggable="true" data-id="HNO2">HNO₂</div>
+                <div class="dnd-chip" draggable="true" data-id="HF">HF</div>
+                <div class="dnd-chip" draggable="true" data-id="H2SO4">H₂SO₄</div>
+                <div class="dnd-chip" draggable="true" data-id="H2S">H₂S</div>
+                <div class="dnd-chip" draggable="true" data-id="H2CO3">H₂CO₃</div>
+                <div class="dnd-chip" draggable="true" data-id="HNO3">HNO₃</div>
+                <div class="dnd-chip" draggable="true" data-id="H2SiO3">H₂SiO₃</div>
+                <div class="dnd-chip" draggable="true" data-id="HBr">HBr</div>
+                <div class="dnd-chip" draggable="true" data-id="HI">HI</div>
+                <div class="dnd-chip" draggable="true" data-id="H2SO3">H₂SO₃</div>
+            </div>
+
+            <div class="dnd-groups">
+                <div class="dnd-group" data-group="сильные кислоты">
+                    <div class="dnd-group-title">Сильные кислоты</div>
+                    <div class="dnd-dropzone" data-group="сильные кислоты"></div>
+                </div>
+                <div class="dnd-group" data-group="слабые кислоты">
+                    <div class="dnd-group-title">Слабые кислоты</div>
+                    <div class="dnd-dropzone" data-group="слабые кислоты"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkDnd5">Проверить</button>
+                <button class="btn-reset" id="resetDnd5">Сбросить</button>
+            </div>
+            <div class="feedback" id="dndFeedback5"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>📝 Задание 3: Реагируют ли вещества?</h2>
+            <p style="margin-bottom:16px; color:#5a6e85;">
+                Для каждой пары веществ укажите, реагируют они или нет.
+            </p>
+
+            <div class="reaction-list" id="pairList5">
+                <div class="pair-item" data-pair-id="0">
+                    <div class="pair-formula">KCl и HNO₃</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+                <div class="pair-item" data-pair-id="1">
+                    <div class="pair-formula">BaSO₄ и HCl</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+                <div class="pair-item" data-pair-id="2">
+                    <div class="pair-formula">Na₂CO₃ и HBr</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+                <div class="pair-item" data-pair-id="3">
+                    <div class="pair-formula">AgNO₃ и HI</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+                <div class="pair-item" data-pair-id="4">
+                    <div class="pair-formula">Na₂SO₃ и H₂SO₄</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+                <div class="pair-item" data-pair-id="5">
+                    <div class="pair-formula">CuS и HCl</div>
+                    <div class="reaction-options">
+                        <button class="reaction-btn" data-value="reacts">реагируют</button>
+                        <button class="reaction-btn" data-value="not-reacts">не реагируют</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:18px;">
+                <button class="btn-check" id="checkPairs5">Проверить</button>
+                <button class="btn-reset" id="resetPairs5">Сбросить</button>
+            </div>
+            <div class="feedback" id="pairsFeedback5"></div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        ⚡ Базовые реакции неорганической химии · интерактивный тренажёр
+    </div>
+</div>
+
+<script>
+    // ================= ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ =================
+    document.querySelectorAll('.page-nav button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.page-nav button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const pageId = this.dataset.page;
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        });
+    });
+
+    // ================= ФУНКЦИЯ НОРМАЛИЗАЦИИ ФОРМУЛ =================
+    function normalizeFormula(str) {
+        if (!str) return '';
+        let normalized = str.trim().toLowerCase().replace(/\s/g, '');
+        const subscriptMap = {
+            '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
+            '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉'
+        };
+        normalized = normalized.replace(/[0-9]/g, match => subscriptMap[match]);
+        return normalized;
+    }
+
+    // ================= СТРАНИЦА 1 (ТЕСТ) =================
+    const answers = { 1: 'Na2O', 2: 'Al2O3', 3: 'CO2', 4: 'CO', 5: 'SO2' };
+
+    document.querySelectorAll('.btn-check').forEach(btn => {
+        if (!btn.dataset.task) return;
+        btn.addEventListener('click', function() {
+            const taskId = this.dataset.task;
+            const groupName = 'q' + taskId;
+            const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+            let selectedValue = null;
+            radios.forEach(radio => { if (radio.checked) selectedValue = radio.value; });
+            const feedbackEl = document.getElementById('fb' + taskId);
+
+            if (!selectedValue) {
+                feedbackEl.textContent = '⚠️ Выберите вариант ответа.';
+                feedbackEl.className = 'feedback neutral';
+                return;
+            }
+            if (selectedValue === answers[taskId]) {
+                feedbackEl.textContent = '✅ Верно! Молодец.';
+                feedbackEl.className = 'feedback correct';
+            } else {
+                feedbackEl.textContent = taskId === '5'
+                    ? '❌ Неверно. Кислоте H₂SO₃ соответствует SO₂.'
+                    : '❌ Неверно. Попробуй ещё раз.';
+                feedbackEl.className = 'feedback incorrect';
+            }
+        });
+    });
+
+    document.querySelectorAll('.btn-reset').forEach(btn => {
+        if (!btn.dataset.task) return;
+        btn.addEventListener('click', function() {
+            const taskId = this.dataset.task;
+            const groupName = 'q' + taskId;
+            document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => r.checked = false);
+            const feedbackEl = document.getElementById('fb' + taskId);
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    });
+
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const name = this.name;
+            if (name && name.startsWith('q')) {
+                const taskId = name.replace('q', '');
+                const feedbackEl = document.getElementById('fb' + taskId);
+                if (feedbackEl) {
+                    feedbackEl.textContent = '';
+                    feedbackEl.className = 'feedback';
+                }
+            }
+        });
+    });
+
+    // ================= ОБЩАЯ ФУНКЦИЯ DRAG & DROP =================
+    function setupDnd(bankId, dropzoneSelector, checkBtnId, resetBtnId, feedbackId, correctMapping, totalChips) {
+        let draggedItem = null;
+        const bank = document.getElementById(bankId);
+        const dropzones = document.querySelectorAll(dropzoneSelector);
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.classList.contains('dnd-chip')) {
+                draggedItem = e.target;
+                e.target.classList.add('dragging');
+                e.dataTransfer.setData('text/plain', e.target.dataset.id);
+                e.dataTransfer.effectAllowed = 'move';
+            }
+        });
+
+        document.addEventListener('dragend', function(e) {
+            if (e.target.classList.contains('dnd-chip')) {
+                e.target.classList.remove('dragging');
+            }
+            draggedItem = null;
+            dropzones.forEach(zone => zone.classList.remove('drag-over'));
+        });
+
+        dropzones.forEach(zone => {
+            zone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                this.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', function(e) {
+                this.classList.remove('drag-over');
+            });
+            zone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                if (draggedItem) {
+                    this.appendChild(draggedItem);
+                    draggedItem.classList.remove('dragging');
+                    draggedItem = null;
+                    const feedbackEl = document.getElementById(feedbackId);
+                    feedbackEl.textContent = '';
+                    feedbackEl.className = 'feedback';
+                }
+            });
+        });
+
+        bank.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        });
+        bank.addEventListener('drop', function(e) {
+            e.preventDefault();
+            if (draggedItem) {
+                bank.appendChild(draggedItem);
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+                const feedbackEl = document.getElementById(feedbackId);
+                feedbackEl.textContent = '';
+                feedbackEl.className = 'feedback';
+            }
+        });
+
+        document.getElementById(checkBtnId).addEventListener('click', function() {
+            let allCorrect = true;
+            let placedCount = 0;
+
+            dropzones.forEach(zone => {
+                const group = zone.dataset.group;
+                const chips = zone.querySelectorAll('.dnd-chip');
+                chips.forEach(chip => {
+                    placedCount++;
+                    const id = chip.dataset.id;
+                    if (correctMapping[id] !== group) {
+                        allCorrect = false;
+                    }
+                });
+            });
+
+            const feedbackEl = document.getElementById(feedbackId);
+
+            if (placedCount < totalChips) {
+                feedbackEl.textContent = '⚠️ Распределите все элементы по группам.';
+                feedbackEl.className = 'feedback neutral';
+                return;
+            }
+
+            if (allCorrect) {
+                feedbackEl.textContent = '✅ Всё верно! Отличная работа.';
+                feedbackEl.className = 'feedback correct';
+            } else {
+                feedbackEl.textContent = '❌ Есть ошибки. Проверьте распределение.';
+                feedbackEl.className = 'feedback incorrect';
+            }
+        });
+
+        document.getElementById(resetBtnId).addEventListener('click', function() {
+            document.querySelectorAll(`${dropzoneSelector} .dnd-chip`).forEach(chip => {
+                chip.classList.remove('dragging');
+                bank.appendChild(chip);
+            });
+            const feedbackEl = document.getElementById(feedbackId);
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    }
+
+    // ================= НАСТРОЙКА DRAG & DROP ДЛЯ СТРАНИЦ =================
+    // Страница 2
+    setupDnd(
+        'dndBank',
+        '#page2 .dnd-dropzone',
+        'checkDnd',
+        'resetDnd',
+        'dndFeedback',
+        {
+            'NO': 'несолеобразующие',
+            'CO': 'несолеобразующие',
+            'BaO': 'основные',
+            'Li2O': 'основные',
+            'FeO': 'основные',
+            'MgO': 'основные',
+            'BeO': 'амфотерные',
+            'Al2O3': 'амфотерные',
+            'Fe2O3': 'амфотерные',
+            'N2O5': 'кислотные',
+            'SO3': 'кислотные',
+            'CO2': 'кислотные',
+            'P2O5': 'кислотные',
+            'SiO2': 'кислотные'
+        },
+        14
+    );
+
+    // Страница 4 (Задание 1)
+    setupDnd(
+        'dndBank4',
+        '#page4 .dnd-dropzone',
+        'checkDnd4',
+        'resetDnd4',
+        'dndFeedback4',
+        {
+            'основные оксиды': 'основные свойства',
+            'основания': 'основные свойства',
+            'кислотные оксиды': 'кислотные свойства',
+            'кислоты': 'кислотные свойства',
+            'амфотерные оксиды': 'основные и кислотные свойства',
+            'амфотерные гидроксиды': 'основные и кислотные свойства'
+        },
+        6
+    );
+
+    // Страница 5 (Задание 2)
+    setupDnd(
+        'dndBank5',
+        '#page5 .dnd-dropzone',
+        'checkDnd5',
+        'resetDnd5',
+        'dndFeedback5',
+        {
+            'HCl': 'сильные кислоты',
+            'HNO3': 'сильные кислоты',
+            'H2SO4': 'сильные кислоты',
+            'HBr': 'сильные кислоты',
+            'HI': 'сильные кислоты',
+            'HNO2': 'слабые кислоты',
+            'HF': 'слабые кислоты',
+            'H2S': 'слабые кислоты',
+            'H2CO3': 'слабые кислоты',
+            'H2SiO3': 'слабые кислоты',
+            'H2SO3': 'слабые кислоты'
+        },
+        11
+    );
+
+    // ================= СТРАНИЦА 2: ЗАПОЛНЕНИЕ ТАБЛИЦЫ =================
+    const fillAnswers = [
+        { hydroxide: 'Ca(OH)₂', type: 'основный' },
+        { hydroxide: 'H₂SiO₃', type: 'кислотный' },
+        { oxide: 'Fe₂O₃', type: 'амфотерный' },
+        { hydroxide: 'H₂SO₃', type: 'кислотный' },
+        { oxide: 'CrO', type: 'основный' },
+        { oxide: 'SO₃', type: 'кислотный' }
+    ];
+
+    function clearRowError(rowIndex) {
+        const tr = document.querySelector(`#fillTable tbody tr:nth-child(${rowIndex + 1})`);
+        if (tr) {
+            tr.classList.remove('row-error');
+        }
+    }
+
+    document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const row = this.dataset.row;
+            document.querySelectorAll(`.type-btn[data-row="${row}"]`).forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            clearRowError(parseInt(row));
+
+            const feedbackEl = document.getElementById('fillFeedback');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'table-feedback';
+        });
+    });
+
+    document.getElementById('checkFill').addEventListener('click', function() {
+        const feedbackEl = document.getElementById('fillFeedback');
+        let allCorrect = true;
+        let allInputsFilled = true;
+
+        for (let i = 0; i < 6; i++) {
+            const oxideInput = document.querySelector(`input[data-row="${i}"][data-col="oxide"]`);
+            const hydroxideInput = document.querySelector(`input[data-row="${i}"][data-col="hydroxide"]`);
+            if (oxideInput && oxideInput.value.trim() === '') allInputsFilled = false;
+            if (hydroxideInput && hydroxideInput.value.trim() === '') allInputsFilled = false;
+            const typeSelected = document.querySelector(`.type-btn[data-row="${i}"].selected`);
+            if (!typeSelected) allInputsFilled = false;
+        }
+
+        if (!allInputsFilled) {
+            feedbackEl.textContent = '⚠️ Заполните все поля и выберите тип для каждой строки.';
+            feedbackEl.className = 'table-feedback neutral';
+            
+            document.querySelectorAll('#fillTable tbody tr').forEach(tr => tr.classList.remove('row-error'));
+            return;
+        }
+
+        for (let i = 0; i < 6; i++) {
+            const tr = document.querySelector(`#fillTable tbody tr:nth-child(${i + 1})`);
+            let rowCorrect = true;
+
+            const oxideInput = document.querySelector(`input[data-row="${i}"][data-col="oxide"]`);
+            const hydroxideInput = document.querySelector(`input[data-row="${i}"][data-col="hydroxide"]`);
+            const selectedTypeBtn = document.querySelector(`.type-btn[data-row="${i}"].selected`);
+
+            const correct = fillAnswers[i];
+
+            if (oxideInput) {
+                const val = normalizeFormula(oxideInput.value);
+                const expected = normalizeFormula(correct.oxide);
+                if (val !== expected) rowCorrect = false;
+            }
+            if (hydroxideInput) {
+                const val = normalizeFormula(hydroxideInput.value);
+                const expected = normalizeFormula(correct.hydroxide);
+                if (val !== expected) rowCorrect = false;
+            }
+            if (!selectedTypeBtn || selectedTypeBtn.dataset.type !== correct.type) {
+                rowCorrect = false;
+            }
+
+            if (rowCorrect) {
+                tr.classList.remove('row-error');
+            } else {
+                tr.classList.add('row-error');
+                allCorrect = false;
+            }
+        }
+
+        if (allCorrect) {
+            feedbackEl.textContent = '✅ Всё верно! Вы отлично разбираетесь в оксидах.';
+            feedbackEl.className = 'table-feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Есть ошибки. Строки с ошибками подсвечены красным.';
+            feedbackEl.className = 'table-feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetFill').addEventListener('click', function() {
+        document.querySelectorAll('.fill-input').forEach(input => {
+            input.value = '';
+        });
+        document.querySelectorAll('.type-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        document.querySelectorAll('#fillTable tbody tr').forEach(tr => tr.classList.remove('row-error'));
+        
+        const feedbackEl = document.getElementById('fillFeedback');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'table-feedback';
+    });
+
+    document.querySelectorAll('.fill-input').forEach(input => {
+        input.addEventListener('input', function() {
+            const feedbackEl = document.getElementById('fillFeedback');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'table-feedback';
+            
+            const row = parseInt(this.dataset.row);
+            clearRowError(row);
+        });
+    });
+
+    // ================= СТРАНИЦА 3: ВЗАИМОДЕЙСТВИЕ С ВОДОЙ =================
+    const reactionAnswers = [true, true, false, true, false, false, true];
+
+    document.querySelectorAll('#page3 .reaction-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const reactionItem = this.closest('.reaction-item');
+            
+            reactionItem.querySelectorAll('.reaction-btn').forEach(b => {
+                b.classList.remove('selected-proceeds', 'selected-not-proceeds');
+            });
+            
+            if (this.dataset.value === 'proceeds') {
+                this.classList.add('selected-proceeds');
+            } else {
+                this.classList.add('selected-not-proceeds');
+            }
+            
+            reactionItem.classList.remove('row-error');
+            
+            const feedbackEl = document.getElementById('reactionsFeedback');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    });
+
+    document.getElementById('checkReactions').addEventListener('click', function() {
+        const feedbackEl = document.getElementById('reactionsFeedback');
+        let allCorrect = true;
+        let answeredCount = 0;
+
+        const reactionItems = document.querySelectorAll('#page3 .reaction-item');
+        
+        reactionItems.forEach(item => {
+            const reactionId = parseInt(item.dataset.reactionId);
+            const selectedBtn = item.querySelector('.reaction-btn.selected-proceeds, .reaction-btn.selected-not-proceeds');
+            
+            if (selectedBtn) {
+                answeredCount++;
+                const isProceeds = selectedBtn.dataset.value === 'proceeds';
+                const correctAnswer = reactionAnswers[reactionId];
+                
+                if (isProceeds !== correctAnswer) {
+                    item.classList.add('row-error');
+                    allCorrect = false;
+                } else {
+                    item.classList.remove('row-error');
+                }
+            } else {
+                item.classList.add('row-error');
+                allCorrect = false;
+            }
+        });
+
+        if (answeredCount < reactionItems.length) {
+            feedbackEl.textContent = '⚠️ Укажите вариант для каждой реакции.';
+            feedbackEl.className = 'feedback neutral';
+            return;
+        }
+
+        if (allCorrect) {
+            feedbackEl.textContent = '✅ Всё верно! Отлично справились.';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Есть ошибки. Строки с неверными ответами подсвечены красным.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetReactions').addEventListener('click', function() {
+        document.querySelectorAll('#page3 .reaction-btn').forEach(btn => {
+            btn.classList.remove('selected-proceeds', 'selected-not-proceeds');
+        });
+        document.querySelectorAll('#page3 .reaction-item').forEach(item => {
+            item.classList.remove('row-error');
+        });
+        const feedbackEl = document.getElementById('reactionsFeedback');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+    // ================= СТРАНИЦА 4: ЗАДАНИЕ 2 (МНОЖЕСТВЕННЫЙ ВЫБОР) =================
+    document.getElementById('checkTask2Btn').addEventListener('click', function() {
+        const checkboxes = document.querySelectorAll('#checkTask2 input[type="checkbox"]');
+        const selected = [];
+        checkboxes.forEach(cb => { if (cb.checked) selected.push(cb.value); });
+        
+        const feedbackEl = document.getElementById('fbTask2');
+        const correct = ['1', '5'];
+        
+        if (selected.length !== 2) {
+            feedbackEl.textContent = '⚠️ Выберите ровно два варианта.';
+            feedbackEl.className = 'feedback neutral';
+            return;
+        }
+        
+        const isCorrect = selected.sort().join(',') === correct.sort().join(',');
+        
+        if (isCorrect) {
+            feedbackEl.textContent = '✅ Верно! CaO (основный оксид) реагирует с HCl (кислота) и Al₂O₃ (амфотерный оксид).';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Неверно. Подумайте, с какими классами реагируют основные оксиды.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetTask2Btn').addEventListener('click', function() {
+        document.querySelectorAll('#checkTask2 input[type="checkbox"]').forEach(cb => cb.checked = false);
+        const feedbackEl = document.getElementById('fbTask2');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+    // ================= СТРАНИЦА 4: ЗАДАНИЕ 3 (МНОЖЕСТВЕННЫЙ ВЫБОР) =================
+    document.getElementById('checkTask3Btn').addEventListener('click', function() {
+        const checkboxes = document.querySelectorAll('#checkTask3 input[type="checkbox"]');
+        const selected = [];
+        checkboxes.forEach(cb => { if (cb.checked) selected.push(cb.value); });
+        
+        const feedbackEl = document.getElementById('fbTask3');
+        const correct = ['3', '4'];
+        
+        if (selected.length !== 2) {
+            feedbackEl.textContent = '⚠️ Выберите ровно два варианта.';
+            feedbackEl.className = 'feedback neutral';
+            return;
+        }
+        
+        const isCorrect = selected.sort().join(',') === correct.sort().join(',');
+        
+        if (isCorrect) {
+            feedbackEl.textContent = '✅ Верно! SO₂ (кислотный оксид) реагирует с Ca(OH)₂ (основание) и BaO (основный оксид).';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Неверно. Подумайте, с какими классами реагируют кислотные оксиды.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetTask3Btn').addEventListener('click', function() {
+        document.querySelectorAll('#checkTask3 input[type="checkbox"]').forEach(cb => cb.checked = false);
+        const feedbackEl = document.getElementById('fbTask3');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+    // ================= СТРАНИЦА 4: ЗАДАНИЕ 4 (ВПИСАТЬ ПРОДУКТ) =================
+    const equationAnswers = [
+        'CaSO3', 'CaCO3', 'Na2SiO3', 'FeCl2', 'FeCl3', 'CuSO4', 'Ba3(PO4)2'
+    ];
+
+    document.querySelectorAll('.equation-input').forEach(input => {
+        input.addEventListener('input', function() {
+            const equationItem = this.closest('.equation-item');
+            equationItem.classList.remove('row-error');
+            const feedbackEl = document.getElementById('equationsFeedback');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    });
+
+    document.getElementById('checkEquations').addEventListener('click', function() {
+        const feedbackEl = document.getElementById('equationsFeedback');
+        let allCorrect = true;
+        let allFilled = true;
+
+        const equationItems = document.querySelectorAll('.equation-item');
+        
+        equationItems.forEach(item => {
+            const input = item.querySelector('.equation-input');
+            if (input.value.trim() === '') allFilled = false;
+        });
+
+        if (!allFilled) {
+            feedbackEl.textContent = '⚠️ Заполните все пропуски.';
+            feedbackEl.className = 'feedback neutral';
+            equationItems.forEach(item => item.classList.remove('row-error'));
+            return;
+        }
+
+        equationItems.forEach(item => {
+            const id = parseInt(item.dataset.equationId);
+            const input = item.querySelector('.equation-input');
+            const userValue = normalizeFormula(input.value);
+            const correctValue = normalizeFormula(equationAnswers[id]);
+
+            if (userValue === correctValue) {
+                item.classList.remove('row-error');
+            } else {
+                item.classList.add('row-error');
+                allCorrect = false;
+            }
+        });
+
+        if (allCorrect) {
+            feedbackEl.textContent = '✅ Всё верно! Отличная работа.';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Есть ошибки. Строки с неверными ответами подсвечены красным.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetEquations').addEventListener('click', function() {
+        document.querySelectorAll('.equation-input').forEach(input => {
+            input.value = '';
+        });
+        document.querySelectorAll('.equation-item').forEach(item => {
+            item.classList.remove('row-error');
+        });
+        const feedbackEl = document.getElementById('equationsFeedback');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+    // ================= СТРАНИЦА 5: ЗАДАНИЕ 1 (ПРОТЕКАЕТ / НЕ ПРОТЕКАЕТ) =================
+    const reactions5Answers = [true, true, false, true, false];
+
+    document.querySelectorAll('#page5 .reaction-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const reactionItem = this.closest('.reaction-item');
+            
+            reactionItem.querySelectorAll('.reaction-btn').forEach(b => {
+                b.classList.remove('selected-proceeds', 'selected-not-proceeds');
+            });
+            
+            if (this.dataset.value === 'proceeds') {
+                this.classList.add('selected-proceeds');
+            } else {
+                this.classList.add('selected-not-proceeds');
+            }
+            
+            reactionItem.classList.remove('row-error');
+            
+            const feedbackEl = document.getElementById('reactionsFeedback5');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    });
+
+    document.getElementById('checkReactions5').addEventListener('click', function() {
+        const feedbackEl = document.getElementById('reactionsFeedback5');
+        let allCorrect = true;
+        let answeredCount = 0;
+
+        const reactionItems = document.querySelectorAll('#reactionList5 .reaction-item');
+        
+        reactionItems.forEach(item => {
+            const reactionId = parseInt(item.dataset.reactionId);
+            const selectedBtn = item.querySelector('.reaction-btn.selected-proceeds, .reaction-btn.selected-not-proceeds');
+            
+            if (selectedBtn) {
+                answeredCount++;
+                const isProceeds = selectedBtn.dataset.value === 'proceeds';
+                const correctAnswer = reactions5Answers[reactionId];
+                
+                if (isProceeds !== correctAnswer) {
+                    item.classList.add('row-error');
+                    allCorrect = false;
+                } else {
+                    item.classList.remove('row-error');
+                }
+            } else {
+                item.classList.add('row-error');
+                allCorrect = false;
+            }
+        });
+
+        if (answeredCount < reactionItems.length) {
+            feedbackEl.textContent = '⚠️ Укажите вариант для каждой реакции.';
+            feedbackEl.className = 'feedback neutral';
+            return;
+        }
+
+        if (allCorrect) {
+            feedbackEl.textContent = '✅ Всё верно! Отлично справились.';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Есть ошибки. Строки с неверными ответами подсвечены красным.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetReactions5').addEventListener('click', function() {
+        document.querySelectorAll('#page5 .reaction-btn').forEach(btn => {
+            btn.classList.remove('selected-proceeds', 'selected-not-proceeds');
+        });
+        document.querySelectorAll('#reactionList5 .reaction-item').forEach(item => {
+            item.classList.remove('row-error');
+        });
+        const feedbackEl = document.getElementById('reactionsFeedback5');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+    // ================= СТРАНИЦА 5: ЗАДАНИЕ 3 (РЕАГИРУЮТ / НЕ РЕАГИРУЮТ) =================
+    const pairs5Answers = [false, false, true, true, true, false];
+
+    document.querySelectorAll('#pairList5 .reaction-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const pairItem = this.closest('.pair-item');
+            
+            pairItem.querySelectorAll('.reaction-btn').forEach(b => {
+                b.classList.remove('selected-proceeds', 'selected-not-proceeds');
+            });
+            
+            if (this.dataset.value === 'reacts') {
+                this.classList.add('selected-proceeds');
+            } else {
+                this.classList.add('selected-not-proceeds');
+            }
+            
+            pairItem.classList.remove('row-error');
+            
+            const feedbackEl = document.getElementById('pairsFeedback5');
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+        });
+    });
+
+    document.getElementById('checkPairs5').addEventListener('click', function() {
+        const feedbackEl = document.getElementById('pairsFeedback5');
+        let allCorrect = true;
+        let answeredCount = 0;
+
+        const pairItems = document.querySelectorAll('#pairList5 .pair-item');
+        
+        pairItems.forEach(item => {
+            const pairId = parseInt(item.dataset.pairId);
+            const selectedBtn = item.querySelector('.reaction-btn.selected-proceeds, .reaction-btn.selected-not-proceeds');
+            
+            if (selectedBtn) {
+                answeredCount++;
+                const isReacts = selectedBtn.dataset.value === 'reacts';
+                const correctAnswer = pairs5Answers[pairId];
+                
+                if (isReacts !== correctAnswer) {
+                    item.classList.add('row-error');
+                    allCorrect = false;
+                } else {
+                    item.classList.remove('row-error');
+                }
+            } else {
+                item.classList.add('row-error');
+                allCorrect = false;
+            }
+        });
+
+        if (answeredCount < pairItems.length) {
+            feedbackEl.textContent = '⚠️ Укажите вариант для каждой пары веществ.';
+            feedbackEl.className = 'feedback neutral';
+            return;
+        }
+
+        if (allCorrect) {
+            feedbackEl.textContent = '✅ Всё верно! Отлично справились.';
+            feedbackEl.className = 'feedback correct';
+        } else {
+            feedbackEl.textContent = '❌ Есть ошибки. Строки с неверными ответами подсвечены красным.';
+            feedbackEl.className = 'feedback incorrect';
+        }
+    });
+
+    document.getElementById('resetPairs5').addEventListener('click', function() {
+        document.querySelectorAll('#pairList5 .reaction-btn').forEach(btn => {
+            btn.classList.remove('selected-proceeds', 'selected-not-proceeds');
+        });
+        document.querySelectorAll('#pairList5 .pair-item').forEach(item => {
+            item.classList.remove('row-error');
+        });
+        const feedbackEl = document.getElementById('pairsFeedback5');
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'feedback';
+    });
+
+</script>
+</body>
+</html>
